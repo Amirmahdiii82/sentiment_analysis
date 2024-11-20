@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #8ecae6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background: #457b9d;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #66C9E8;
+            margin-bottom: 20px;
+        }
+
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .result.happy {
+            background-color: #e6f9f9;
+            color: #28a745;
+        }
+
+        .result.sad {
+            background-color: #f9ecec;
+            color: #dc3545;
+        }
+
+        .analyzed-text {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #555;
+            padding: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #66C9E8;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #5ABCD8;
+        }
+
+        a {
+            color: #66C9E8;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Result</h1>
+        <div class="analyzed-text">
+            <p><strong>Text Analyzed:</strong></p>
+            <p>{{ result.user_text }}</p>
+        </div>
+        <div class="result {% if result.sentiment == 'HAPPY' %}happy{% else %}sad{% endif %}">
+            Sentiment: {{ result.sentiment }}
+        </div>
+        <form action="{% url 'analysis:index' %}" method="GET">
+            <button type="submit">Analyze Another Text</button>
+        </form>
+        <a href="https://github.com/Amirmahdiii82/sentiment_analysis.git" class="button">to see project codes click here</a>
+    </div>
+</body>
+</html>
